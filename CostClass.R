@@ -12,14 +12,14 @@ Cost <- R6Class("Cost", list(
     invisible(self)
   },
   currency_to_base_country = function() {
-    self$change_currency(self$base_currency)  
+    self$convert_currency(self$base_currency)  
     invisible(self)
   },
   change_year = function(year) {
     temp_currency <- self$currency
     self$currency_to_base_country()
     self$inflate_value(year)
-    self$change_currency(temp_currency)
+    self$convert_currency(temp_currency)
     invisible(self)
   },
   inflate_value = function(year) {
