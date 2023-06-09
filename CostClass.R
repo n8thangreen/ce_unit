@@ -32,7 +32,7 @@ Cost <- R6Class("Cost", list(
 mycost <- Cost$new()
 
 mycost$value
-mycost$change_currency("USD")
+mycost$convert_currency("USD")
 mycost$currency
 
 mycost$currency_to_base_country()
