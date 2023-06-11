@@ -32,8 +32,13 @@ Cost <- R6Class("Cost",
     self$convert_currency(temp_currency)
     invisible(self)
   },
-  inflate_value = function(year) {
-    self$value <- self$value*(1 + 0.035)^(year - self$year)
+  inflate_value = function(to_year) {
+    to_cost <- self$value
+    for (i in self$year:(to_year - 1)) {
+      rate <- inflation_df[inflation_df$year == i, "rate"]
+      to_cost <- to_cost * (1 + rate)
+    }
+    self$value <- to_cost
     self$year <- year
     invisible(self)
   },
