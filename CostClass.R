@@ -17,7 +17,10 @@ Cost <- R6Class("Cost",
         stop("Invalid currency")
       }},
   convert_currency = function(to_currency) {
-    self$value <- self$value + 1
+    rate <- conversion_df[conversion_df$year == self$year &
+                          conversion_df$from == self$currency &
+                          conversion_df$to == self$to_currency, "rate"]
+    self$value <- self$value * rate
     self$currency <- to_currency
     invisible(self)
   },
