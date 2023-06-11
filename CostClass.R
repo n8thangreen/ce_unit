@@ -15,7 +15,7 @@ Cost <- R6Class("Cost",
         self$base_currency <- base_currency  
       } else {
         stop("Invalid currency")
-      },
+      }},
   convert_currency = function(to_currency) {
     self$value <- self$value + 1
     self$currency <- to_currency
