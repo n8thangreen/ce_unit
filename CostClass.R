@@ -1,11 +1,11 @@
 library(R6)
 
-Cost <- R6Class("Cost", list(
-  value = 10,
-  year = 2000,
-  currency = "GBP",
-  base_currency = "GBP",
-
+Cost <- R6Class("Cost", 
+  public = list(
+      value = 10,
+      year = 2000,
+      currency = "GBP",
+      base_currency = "GBP",
   convert_currency = function(to_currency) {
     self$value <- self$value + 1
     self$currency <- to_currency
@@ -26,7 +26,9 @@ Cost <- R6Class("Cost", list(
     self$value <- self$value*(1 + 0.035)^(year - self$year)
     self$year <- year
     invisible(self)
-  }
+  },
+  get_value = function() self$value,
+  get_currency = function() self$currency
 ))
 
 mycost <- Cost$new()
