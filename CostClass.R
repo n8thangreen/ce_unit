@@ -7,7 +7,8 @@ currencyEnum <- function() {
 Cost <- R6Class("Cost", 
   public = list(
     # Constructor method
-    initialize = function(value, year, currency, base_currency) {
+    initialize = function(value, year, currency, base_currency = currency) {
+      force(base_currency)
       self$value = value,
       self$year = year,
       self$currency = currencyEnum()[[currency]]
@@ -55,7 +56,7 @@ Cost <- R6Class("Cost",
   )
 )
 
-mycost <- Cost$new()
+mycost <- Cost$new(value = 10, year = 2000, currency = "GBP")
 
 mycost$get_value()
 mycost$convert_currency("USD")
