@@ -12,7 +12,7 @@ Cost <- R6Class("Cost",
       self$year = year,
       self$currency = currencyEnum()[[currency]]
       self$base_currency = currencyEnum()[[base_currency]]
-      if (is.null(self$currency) && is.null(self$base_currency)) {
+      if (is.null(self$currency) || is.null(self$base_currency)) {
         stop("Invalid currency")
       },
   convert_currency = function(to_currency) {
