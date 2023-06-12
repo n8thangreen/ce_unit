@@ -58,15 +58,15 @@ Cost <- R6Class("Cost",
 
 mycost <- Cost$new()
 
-mycost$value
+mycost$get_value()
 mycost$convert_currency("USD")
-mycost$currency
+mycost$get_currency()
 
 mycost$currency_to_base_country()
-mycost$currency
+mycost$get_currency()
 
 mycost$inflate_value(2020)
-mycost$value
+mycost$get_value()
 
 mycost$change_year(2020)
-mycost$value
+mycost$get_value()
