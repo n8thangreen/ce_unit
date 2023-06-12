@@ -16,7 +16,7 @@ Cost <- R6Class("Cost",
         stop("Invalid currency")
       },
   convert_currency = function(to_currency) {
-    if (!to_currency %in% private$currency_list) {
+    if (is.null(currencyEnum()[[to_currency]])) {
       stop("Invalid currency")
     }
     rate <- conversion_df[conversion_df$year == self$year &
