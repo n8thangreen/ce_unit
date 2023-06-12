@@ -52,9 +52,6 @@ Cost <- R6Class("Cost",
   },
   get_value = function() self$value,
   get_currency = function() self$currency
-  ),
-  private = list(
-    currency_list = c("GBP", "USD")
   )
 )
 
