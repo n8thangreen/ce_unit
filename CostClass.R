@@ -1,21 +1,20 @@
 library(R6)
 
+currencyEnum <- function() {
+    list(GBP = "GBP", USD = "USD"))
+}
+
 Cost <- R6Class("Cost", 
   public = list(
     # Constructor method
     initialize = function(value, year, currency, base_currency) {
       self$value = value,
       self$year = year,
-      if (currency %in% private$currency_list) {
-        self$currency <- currency  
-      } else {
+      self$currency = currencyEnum()[[currency]]
+      self$base_currency = currencyEnum()[[base_currency]]
+      if (is.null(self$currency) && is.null(self$base_currency)) {
         stop("Invalid currency")
-      }
-      if (base_currency %in% private$currency_list) {
-        self$base_currency <- base_currency  
-      } else {
-        stop("Invalid currency")
-      }},
+      },
   convert_currency = function(to_currency) {
     if (!to_currency %in% private$currency_list) {
       stop("Invalid currency")
