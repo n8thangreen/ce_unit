@@ -48,6 +48,9 @@ Cost <- R6Class("Cost",
     self$year <- year
     invisible(self)
   },
+  inflate_next_year = function() {
+    self$inflate_value(self$year + 1)
+  },
   get_value = function() self$value,
   get_currency = function() self$currency
   ),
