@@ -5,12 +5,13 @@ for (i in 1:n_treatments) {
   pop <- start_pop
   
   for (j in 2:n_cycles) {
-    
+    # step forward single year
     prob_matrix <- prob_matrix |> next_year(age)
     pop <- pop |> next_year(prob_matrix)
-    pop_matrix[, cycle = j, treatment = i] <- pop
-    
     c_state.next_year()
+
+    # append latest values
+    pop_matrix[, cycle = j, treatment = i] <- pop
     c_state_matrix[treatment = i, ] <- c_state
     
     cycle_costs[i, ] <- c_state.total()
