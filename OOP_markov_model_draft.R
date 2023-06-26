@@ -5,10 +5,10 @@ for (i in 1:n_treatments) {
   pop <- start_pop
   
   for (j in 2:n_cycles) {
-    # step forward single year
-    prob_matrix <- prob_matrix |> next_year(age)
-    pop <- pop |> next_year(prob_matrix)
-    c_state.next_year()
+    # single step forward
+    prob_matrix <- prob_matrix |> next_period(age)
+    pop <- pop |> next_period(prob_matrix)
+    c_state.next_period()
 
     # append latest values
     pop_matrix[, cycle = j, treatment = i] <- pop
