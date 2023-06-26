@@ -13,7 +13,7 @@ for (i in 1:n_treatments) {
     c_state.next_year()
     c_state_matrix[treatment = i, ] <- c_state
     
-    cycle_costs[i, ] <- c_state |> cycle_total()
+    cycle_costs[i, ] <- c_state.total()
     
     age <- age + 1
   }
